@@ -82,4 +82,3 @@ It highlighted how scanners detect common misconfigurations and why maintaining 
 ---
 
 **Author:** Rahul Malatesh Sannapujar  
-**Date:** 04/10/2025  
