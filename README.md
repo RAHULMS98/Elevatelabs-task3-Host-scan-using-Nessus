@@ -1,53 +1,85 @@
-                                                        Basic Vulnerability Scan
-The objective of this task was to use a free vulnerability scanning tool, 
+# 🧩 Basic Vulnerability Scan
 
-Nessus Essentials, to identify common vulnerabilities on a local machine (PC).   
+## 🎯 Objective
+To perform a basic vulnerability assessment on a local system using **Nessus Essentials** — a widely used vulnerability scanner — to identify common security weaknesses and potential misconfigurations.
 
-Implementation and Results
+---
 
+## 🧰 Tools Used
+- **Nessus Essentials** – Free vulnerability scanning tool by Tenable.  
+- **Local Machine (Target):** IP – `172.16.xx.xxx`
 
-Tool Setup: Nessus Essentials was installed and configured, including the crucial step of downloading and initializing its plugins.   
+---
 
+## ⚙️ Implementation and Process
 
-Scan Configuration: A new scan was configured, named 'patch_finder'.   
+### 1. **Tool Setup**
+Installed and configured **Nessus Essentials**, including downloading and initializing its latest plugin database for accurate detection.
 
+### 2. **Scan Configuration**
+Created a new scan profile named **`patch_finder`**.
 
-Scan Target: The local machine's IP address (e.g., 172.16.xx.xxx) was set as the target.   
+### 3. **Target Selection**
+Added the local machine IP (`172.16.xx.xxx`) as the scan target.
 
+### 4. **Policy Applied**
+Selected the **Basic Network Scan** policy for general vulnerability assessment.
 
+### 5. **Scan Execution**
+Executed the scan between **7:25 PM and 7:42 PM (17 minutes total)**.  
+The scan completed successfully and generated detailed vulnerability results.
 
-Policy: Basic Network Scan was selected for a general vulnerability assessment.   
+---
 
+## 🧾 Vulnerability Findings
 
+| Severity | Count | Example Issues |
+|-----------|--------|----------------|
+| Info | Majority | General system information, service banners |
+| Medium | Few | SSL Certificate Cannot Be Trusted |
+| Mixed | Present | Combination of various severity levels |
 
-Scan Execution: The scan ran for 17 minutes (from 7:25 PM to 7:42 PM) and was completed.   
+**Total Vulnerabilities Found:** 23  
 
-Vulnerability Findings
-The completed scan found a total of 
+### 🔍 **Key Vulnerability Groups**
+- **Netstat Portscanner (SSH):** 30 occurrences  
+- **SMB (Multiple Issues):** 6 occurrences  
+- **SSL (Multiple Issues):** 4 occurrences *(includes the most severe finding)*
 
-23 vulnerabilities.The severity was predominantly    
+---
 
-"Info", but the overall results included a group with a "Mixed" severity, which contained the most severe finding.   
+## 🚨 Most Severe Finding
 
-Key Vulnerability Groups:
+**Vulnerability Title:** SSL Certificate Cannot Be Trusted  
+**Severity Level:** Medium  
+**CVSS v3.0 Base Score:** 6.5  
 
-Netstat Portscanner (SSH): 30 counts.   
+### **Root Cause**
+- Broken or incomplete certificate chain (e.g., self-signed or missing intermediate CA).  
+- Invalid or expired SSL certificate.  
+- Unverified or bad digital signature.
 
-SMB (Multiple Issues): 6 counts.   
+### **Recommended Solution**
+Obtain or generate a **valid SSL certificate** from a trusted Certificate Authority (CA) and correctly configure the service to use it.
 
-SSL (Multiple Issues): 4 counts, including the most severe issue found.   
+---
 
+## 🔐 Risk Impact
+An untrusted SSL certificate can enable **man-in-the-middle (MITM) attacks**, allow **data interception**, and reduce **user trust** in secure communications.
 
+---
 
-Most Severe Finding: The most severe individual finding was a MEDIUM-rated issue within the SSL (Multiple Issues) group, titled "SSL Certificate Cannot Be Trusted".   
+## 🧠 Conclusion
+This exercise provided hands-on experience with **Nessus Essentials** and basic vulnerability scanning methodology.  
+It highlighted how scanners detect common misconfigurations and why maintaining valid SSL certificates and patching known vulnerabilities is critical for system security.
 
+---
 
+## 📂 Files & Artifacts
+- Nessus Scan Report (`patch_finder_report.html`)  
+- Screenshots: Scan Configuration, Scan Results Dashboard, Vulnerability Summary  
 
-Risk Factor/Score: Medium, with a CVSS v3.0 Base Score of 6.5.   
+---
 
-
-
-Root Cause: The untrusted status can be caused by a broken certificate chain (e.g., self-signed or missing intermediate certificates), an invalid certificate date, or a bad/unverified signature.   
-
-
-Solution: The recommended solution is to "Purchase or generate a proper SSL certificate for this service".
+**Author:** Rahul Malatesh Sannapujar  
+**Date:** 04/10/2025  
